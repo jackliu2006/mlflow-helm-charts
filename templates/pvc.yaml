@@ -21,7 +21,7 @@ spec:
     - ReadWriteOnce
   storageClassName: local-storage
   local:
-    path: /mnt/k8s   # must exist on the node
+    path: /mnt/data   # must exist on the node
   nodeAffinity:
     required:
       nodeSelectorTerms:

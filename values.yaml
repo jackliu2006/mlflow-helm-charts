@@ -474,7 +474,7 @@ extraSecretNamesForEnvFrom: []
 
 ingress:
   # -- Specifies if you want to create an ingress access
-  enabled: true
+  enabled: false
   # -- New style ingress class name. Only possible if you use K8s 1.18.0 or later version
   className: "kong"
   # -- Additional ingress annotations

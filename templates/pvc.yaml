@@ -22,3 +22,11 @@ spec:
   storageClassName: local-storage
   local:
     path: /mnt/k8s   # must exist on the node
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - node1

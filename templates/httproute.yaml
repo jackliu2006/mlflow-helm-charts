@@ -11,12 +11,6 @@ spec:
       - path:
           type: PathPrefix
           value: /mlflow
-      filters:
-          - type: URLRewrite
-            urlRewrite:
-              path:
-                type: ReplaceFullPath
-                replaceFullPath: /
       backendRefs:
       - name: mlflow
         port: 80

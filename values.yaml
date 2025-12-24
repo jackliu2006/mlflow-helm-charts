@@ -4,7 +4,7 @@
 # Declare variables to be passed into your templates.
 
 # -- (int) Numbers of replicas
-replicaCount: 2
+replicaCount: 1
 
 # -- Image of mlflow
 image:
@@ -248,13 +248,15 @@ mysql:
 # Mlflow blob storage settings
 artifactRoot:
   # -- Specifies if you want to enable proxied artifact storage access
-  proxiedArtifactStorage: false
+  #proxiedArtifactStorage: false
+  proxiedArtifactStorage: true
 
   # -- Specifies the default artifact root.
   defaultArtifactRoot: "./mlruns"
 
   # -- Specifies the default artifacts destination
-  defaultArtifactsDestination: "./mlartifacts"
+  defaultArtifactsDestination: "/mlflow/data/mlartifacts"
+
 
   # -- Specifies if you want to use Azure Blob Storage Mlflow Artifact Root
   azureBlob:
@@ -551,16 +553,19 @@ initContainers: []
 extraContainers: []
 
 # -- Extra Volumes for the pod
-extraVolumes: []
-# - name: mlflow-volume
-#   persistentVolumeClaim:
-#     claimName: mlflow-pv-volume
+extraVolumes: 
+  - name: mlflow-volume
+    persistentVolumeClaim:
+      claimName: mlflow-pvc
 # - name: example
 #   configMap:
 #     name: example
 
 # -- Extra Volume Mounts for the mlflow container
-extraVolumeMounts: []
+extraVolumeMounts: 
+  - name: mlflow-volume
+    mountPath: /mlflow/data
+
 # - name: mlflow-volume
 #   mountPath: /mlflow/data
 # - name: example

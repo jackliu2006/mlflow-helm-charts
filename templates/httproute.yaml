@@ -14,3 +14,16 @@ spec:
       backendRefs:
       - name: mlflow
         port: 80
+    - matches:
+      - path:
+          type: PathPrefix
+          value: /mlflowapi
+      filters:
+        - type: URLRewrite
+          urlRewrite:
+            path:
+              type: ReplaceFullPath
+              replaceFullPath: /
+      backendRefs:
+      - name: mlflow
+        port: 80

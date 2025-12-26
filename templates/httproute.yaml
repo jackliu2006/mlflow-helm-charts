@@ -23,7 +23,7 @@ spec:
           urlRewrite:
             path:
               type: ReplacePrefixMatch
-              replaceFullPath: /
+              replacePrefixMatch: /
       backendRefs:
       - name: mlflow
         port: 80
